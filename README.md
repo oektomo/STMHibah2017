@@ -1,3 +1,7 @@
+this project using STM32F103C8T6  
+http://wiki.stm32duino.com/index.php?title=Blue_Pill  
+![Image of Blue pill](docs/Bluepillpinout.gif)  
+
 create bin
 Project --> Properties --> C/C++ Build --> Settings
 tab "Tool Settings" Cross ARM GNU Create Flash Image collapse and select General
