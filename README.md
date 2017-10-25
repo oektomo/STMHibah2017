@@ -29,4 +29,11 @@ remove Filter stm32f10x_usart.c
 Remove :  
 - stm32f10x_uart.c  
 
-To do: make a header?  
+To do: make a header? 
+
+Branch list:  
+- master
+our working area  
+- otm  
+our early working area but obsolete, let's remove it later  
+
