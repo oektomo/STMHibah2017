@@ -33,6 +33,7 @@
 
 #include "Timer.h"
 #include "BlinkLed.h"
+#include "uart.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -90,6 +91,9 @@ main(int argc, char* argv[])
   timer_start();
 
   blink_led_init();
+
+  USART_InitTypeDef USART_InitStructure;
+  initUART(&USART_InitStructure);
   
   uint32_t seconds = 0;
 
