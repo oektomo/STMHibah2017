@@ -25,3 +25,8 @@ Tab Source Location --> Edit Filter
 ![Image of Path And Symbols](docs/PathAndSymbols.png)
 remove Filter stm32f10x_usart.c
 ![Image of Edit Filter](docs/EditFilter.png)
+
+Remove :  
+- stm32f10x_uart.c  
+
+To do: make a header?  
