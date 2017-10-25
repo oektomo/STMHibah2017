@@ -15,6 +15,10 @@ in location: /usr/local/bin/st-flash
 in working directory: ${project_loc}/Release/   
 in Arguments: write ${project_name}.bin 0x8000000  
 
+  
+Build shortcut in Eclipse
+Window > Preferences > General > Keys
+
 save before build  
 Window --> Preferences --> General --> Workspace  
 on this page, select the Save automatically before build  

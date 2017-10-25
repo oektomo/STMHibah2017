@@ -31,6 +31,7 @@
 #include <stdlib.h>
 #include "diag/Trace.h"
 
+#include "platform_config.h"
 #include "Timer.h"
 #include "BlinkLed.h"
 #include "uart.h"
@@ -66,7 +67,7 @@
 // ----- Timing definitions -------------------------------------------------
 
 // Keep the LED on for 2/3 of a second.
-#define BLINK_ON_TICKS  (TIMER_FREQUENCY_HZ * 9 / 100)
+#define BLINK_ON_TICKS  (TIMER_FREQUENCY_HZ * 50 / 100)
 #define BLINK_OFF_TICKS (TIMER_FREQUENCY_HZ - BLINK_ON_TICKS)
 
 // ----- main() ---------------------------------------------------------------
@@ -94,7 +95,10 @@ main(int argc, char* argv[])
 
   USART_InitTypeDef USART_InitStructure;
   initUART(&USART_InitStructure);
-  
+  USART_Tx(USARTrPi, 'x');
+  USART_Tx(USARTrPi, 'x');
+  USART_Tx(USARTrPi, 'x');
+
   uint32_t seconds = 0;
 
   // Infinite loop
