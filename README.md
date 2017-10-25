@@ -22,6 +22,6 @@ on this page, select the Save automatically before build
 adding disabled file (unfilter)  
 Project Properties --> C/C++ General --> Paths and Symbols  
 Tab Source Location --> Edit Filter
-![Image of Path And Symbols](docs/EditFilterthAndSymbols.png)
+![Image of Path And Symbols](docs/PathAndSymbols.png)
 remove Filter stm32f10x_usart.c
 ![Image of Edit Filter](docs/EditFilter.png)
