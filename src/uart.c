@@ -7,11 +7,14 @@
 
 #include "platform_config.h"
 #include "uart.h"
+#include <stdarg.h>
+#include <stdio.h>
 
 /*
  * to initialize our UART we need 3 things
  * RCC UART
  * UART configuration
+ * UART ENABLE
  *
  * RCC GPIO
  * GPIO AF configuration
@@ -83,14 +86,20 @@ void initUART_GPIO()
 	  GPIO_Init(USARTm8_GPIO, &GPIO_InitStructure);
 }
 
-void USART_Tx(USART_TypeDef* USARTx, uint8_t Data)
+#ifdef INLINE_CODE
+inline void
+__attribute__((always_inline))
+#else
+void
+#endif
+USART_Tx(USART_TypeDef* USARTx, uint8_t Data)
 {
 
 	while( !USART_GetFlagStatus(USARTx, USART_FLAG_TXE) );
 	USART_SendData(USARTx, Data);
 }
 
-void USART_SendString(USART_TypeDef* USARTx, const char* AoChar)
+uint8_t USART_SendString(USART_TypeDef* USARTx, const char* AoChar)
 {
 	uint8_t i = 0;
 	while(AoChar[i] != '\0')
@@ -98,4 +107,30 @@ void USART_SendString(USART_TypeDef* USARTx, const char* AoChar)
 		USART_Tx(USARTx, AoChar[i]);
 		i++;
 	}
+	return i;
+}
+
+int
+uart_printf(const char* format, ...)
+{
+  int ret;
+  va_list ap;
+
+  va_start (ap, format);
+
+  // TODO: rewrite it to no longer use newlib, it is way too heavy
+
+  static char buf[OS_INTEGER_UART_PRINTF_TMP_ARRAY_SIZE];
+
+  // Print to the local buffer
+  ret = vsnprintf (buf, sizeof(buf), format, ap);
+  if (ret > 0)
+    {
+      // Transfer the buffer to the device
+      //ret = trace_write (buf, (size_t)ret);
+	  ret = (int)USART_SendString(USARTrPi, buf);
+    }
+
+  va_end (ap);
+  return ret;
 }

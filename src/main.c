@@ -35,6 +35,7 @@
 #include "Timer.h"
 #include "BlinkLed.h"
 #include "uart.h"
+#include "pheripheral.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -82,13 +83,14 @@
 int
 main(int argc, char* argv[])
 {
+#ifdef USE_TRACE
   // Send a greeting to the trace device (skipped on Release).
   trace_puts("Hello ARM World!");
 
   // At this stage the system clock should have already been configured
   // at high speed.
   trace_printf("System clock: %u Hz\n", SystemCoreClock);
-
+#endif
   timer_start();
 
   blink_led_init();
@@ -96,9 +98,11 @@ main(int argc, char* argv[])
   USART_InitTypeDef USART_InitStructure;
   initUART(&USART_InitStructure);
 
-  USART_SendString(USARTrPi, "Hello There\n\r");
+  USART_SendString(USARTrPi, "Hello ARM World!\n\r");
+
 
   uint32_t seconds = 0;
+  pheripheralInputTypedef pheripheralIn[PHERIPHERAL_AMOUNT];
 
   // Infinite loop
   while (1)
@@ -108,11 +112,16 @@ main(int argc, char* argv[])
 
       blink_led_off();
       timer_sleep(BLINK_OFF_TICKS);
+      //USART_SendString(USARTrPi, "Hello ARM World!\n\r");
+      initPheripheralInput(pheripheralIn);
+      readAllPheripheral(pheripheralIn);
+      printPheripheralState(pheripheralIn);
 
       ++seconds;
-
+#ifdef USE_TRACE
       // Count seconds on the trace device.
       trace_printf("Second %u\n", seconds);
+#endif
     }
   // Infinite loop, never return.
 }
