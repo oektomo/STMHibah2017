@@ -47,7 +47,6 @@ void initUART(USART_InitTypeDef* USART_InitStructure)
 
 	  USART_Cmd(USARTrPi, ENABLE);
 	  USART_Cmd(USARTm8, ENABLE);
-	  USART_SendData(USARTrPi, 'x');
 }
 
 /*
@@ -89,4 +88,14 @@ void USART_Tx(USART_TypeDef* USARTx, uint8_t Data)
 
 	while( !USART_GetFlagStatus(USARTx, USART_FLAG_TXE) );
 	USART_SendData(USARTx, Data);
+}
+
+void USART_SendString(USART_TypeDef* USARTx, const char* AoChar)
+{
+	uint8_t i = 0;
+	while(AoChar[i] != '\0')
+	{
+		USART_Tx(USARTx, AoChar[i]);
+		i++;
+	}
 }

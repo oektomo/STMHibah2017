@@ -13,5 +13,6 @@
 void initUART(USART_InitTypeDef* USART_InitStructure);
 void initUART_GPIO();
 void USART_Tx(USART_TypeDef* USARTx, uint8_t Data);
+void USART_SendString(USART_TypeDef* USARTx, const char* AoChar);
 
 #endif /* UART_H_ */

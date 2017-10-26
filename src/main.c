@@ -95,9 +95,8 @@ main(int argc, char* argv[])
 
   USART_InitTypeDef USART_InitStructure;
   initUART(&USART_InitStructure);
-  USART_Tx(USARTrPi, 'x');
-  USART_Tx(USARTrPi, 'x');
-  USART_Tx(USARTrPi, 'x');
+
+  USART_SendString(USARTrPi, "Hello There\n\r");
 
   uint32_t seconds = 0;
 
