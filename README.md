@@ -19,15 +19,15 @@ in Arguments: write ${project_name}.bin 0x8000000
 Build shortcut in Eclipse
 Window > Preferences > General > Keys
 
-save before build  
+Save before build  
 Window --> Preferences --> General --> Workspace  
 on this page, select the Save automatically before build  
 
-adding disabled file (unfilter)  
+Adding disabled file (unfilter)  
 Project Properties --> C/C++ General --> Paths and Symbols  
 Tab Source Location --> Edit Filter
 ![Image of Path And Symbols](docs/PathAndSymbols.png)
-remove Filter stm32f10x_usart.c
+remove Filter stm32f10x_usart.c  
 ![Image of Edit Filter](docs/EditFilter.png)
 
 Remove :  

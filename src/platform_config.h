@@ -10,7 +10,7 @@
 
   #define USARTrPi                   USART1
   #define USARTrPi_GPIO              GPIOA
-  #define USARTrPi_CLK               RCC_APB2Periph_USART1
+  #define USARTrPi_CLK_APB2          RCC_APB2Periph_USART1
   #define USARTrPi_GPIO_CLK          RCC_APB2Periph_GPIOA
   #define USARTrPi_RxPin             GPIO_Pin_10
   #define USARTrPi_TxPin             GPIO_Pin_9
@@ -19,7 +19,7 @@
 
   #define USARTm8                   USART3
   #define USARTm8_GPIO              GPIOB
-  #define USARTm8_CLK               RCC_APB1Periph_USART3
+  #define USARTm8_CLK_APB1          RCC_APB1Periph_USART3
   #define USARTm8_GPIO_CLK          RCC_APB2Periph_GPIOB
   #define USARTm8_RxPin             GPIO_Pin_11
   #define USARTm8_TxPin             GPIO_Pin_10

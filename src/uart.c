@@ -22,7 +22,7 @@ void initUART(USART_InitTypeDef* USART_InitStructure)
 	initUART_GPIO();
 
 	  /* Enable USARTrPi Clock */
-	  RCC_APB1PeriphClockCmd(USARTrPi_CLK, ENABLE);
+	  RCC_APB2PeriphClockCmd(USARTrPi_CLK_APB2, ENABLE);
 
 	  USART_InitStructure->USART_BaudRate = 115200;
 	  USART_InitStructure->USART_WordLength = USART_WordLength_8b;
@@ -34,7 +34,7 @@ void initUART(USART_InitTypeDef* USART_InitStructure)
 	  USART_Init(USARTrPi, USART_InitStructure);
 
 	  /* Enable USARTm8 Clock */
-	  RCC_APB1PeriphClockCmd(USARTm8_CLK, ENABLE);
+	  RCC_APB1PeriphClockCmd(USARTm8_CLK_APB1, ENABLE);
 
 	  USART_InitStructure->USART_BaudRate = 115200;
 	  USART_InitStructure->USART_WordLength = USART_WordLength_8b;
