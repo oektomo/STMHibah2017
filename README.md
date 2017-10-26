@@ -33,7 +33,11 @@ remove Filter stm32f10x_usart.c
 Remove :  
 - stm32f10x_uart.c  
 
-To do: make a header? 
+To do: 
+- make a header? 
+- try inlining some function __inlinegcc
+- try interrupt Receive
+- copy parsing
 
 Branch list:  
 - master
