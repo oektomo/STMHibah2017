@@ -98,7 +98,9 @@ main(int argc, char* argv[])
   USART_InitTypeDef USART_InitStructure;
   initUART(&USART_InitStructure);
 
-  USART_SendString(USARTrPi, "Hello ARM World!\n\r");
+  NVIC_Config();
+
+  USART_SendString(USARTrPi, "SmartHome Started v0.2 \n\r");
 
 
   uint32_t seconds = 0;
@@ -112,7 +114,6 @@ main(int argc, char* argv[])
 
       blink_led_off();
       timer_sleep(BLINK_OFF_TICKS);
-      //USART_SendString(USARTrPi, "Hello ARM World!\n\r");
       initPheripheralInput(pheripheralIn);
       readAllPheripheral(pheripheralIn);
       printPheripheralState(pheripheralIn);

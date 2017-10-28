@@ -48,6 +48,10 @@ void initUART(USART_InitTypeDef* USART_InitStructure)
 
 	  USART_Init(USARTm8, USART_InitStructure);
 
+	  // Enable interrupt
+	  USART_ITConfig(USARTrPi, USART_IT_RXNE, ENABLE);
+	  USART_ITConfig(USARTm8, USART_IT_RXNE, ENABLE);
+
 	  USART_Cmd(USARTrPi, ENABLE);
 	  USART_Cmd(USARTm8, ENABLE);
 }
