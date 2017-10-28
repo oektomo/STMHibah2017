@@ -31,6 +31,9 @@ NVIC_Config(void)
 	NVIC_Init(&NVIC_InitStruct);
 }
 
+/*
+ * USART1 interrupt handler
+ */
 void
 USART1_IRQHandler(void)
 {
@@ -44,6 +47,9 @@ USART1_IRQHandler(void)
 	}
 }
 
+/*
+ * USART3 interrupt handler
+ */
 void
 USART3_IRQHandler(void)
 {
